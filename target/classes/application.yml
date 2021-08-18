@@ -1,0 +1,32 @@
+spring: 
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///test?serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: 123456
+    
+  thymeleaf:
+    encoding: UTF-8
+    #开发时关闭缓存(模板只加载一次),不然没法看到实时页面需要重构或重启
+    cache: false
+    #suffix默认.HTML5
+    #prefix默认classpath:/templates/
+
+  mvc:
+    static-path-pattern: /**
+  web:
+    resources:
+      static-locations: classpath:/templates/,classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+
+mybatis:
+  type-aliases-package: com.cssl.pojo
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    auto-mapping-behavior: full
+    use-generated-keys: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  
+    
+pagehelper:
+  reasonable: true
+  page-size-zero: true 
+  

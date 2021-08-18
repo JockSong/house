@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+<table border="1">
+    <tr>
+        <td>员工编号</td>
+        <td>员工姓名</td>
+        <td>员工薪资</td>
+        <td>日期</td>
+        <td>部门名称</td>
+    </tr>
+    <tr th:each="e:${list}" style="text-align: center">
+        <td th:text="${e.empno}"></td>
+        <td th:text="${e.ename}"></td>
+        <td th:text="${#numbers.formatDecimal(e.sal,1,2)}"></td>
+        <td  th:text="${#dates.format(e.hiredate,'yyyy-MM-dd')}"></td>
+        <td th:text="${e.dname}"></td>
+    </tr>
+</table>
+    <a th:href="@{'succes?pageIndex='+${index-1}}">上一页</a>
+    <a th:href="@{'succes?pageIndex='+${index+1}}">上一页</a>
+</center>
+</body>
+</html>
